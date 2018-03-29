@@ -41,10 +41,19 @@ public class ArraysGenerator {
             }else if(clazz.equals(Integer.class)){
                 int i1 = random.nextInt(maxNums);
                 list.add((T)Integer.valueOf(i1));
+            }else if(clazz.equals(Short.class)){
+                int i1 = random.nextInt(Short.MAX_VALUE + 1);
+                list.add((T)Short.valueOf(Integer.toString(i1)));
+            }else if(clazz.equals(Byte.class)){
+                int i1=random.nextInt(Byte.MAX_VALUE+1);
+                list.add((T)Byte.valueOf(Integer.toString(i1)));
+            }else if(clazz.equals(Double.class)){
+                Double d=random.nextDouble()*maxNums;
+                list.add((T)d);
             }
         }
         T[] result = list.toArray((T[])Array
-                .newInstance(clazz.getComponentType(), size)) ;
+                .newInstance(clazz, size)) ;
         return result;
     }
 }

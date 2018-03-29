@@ -1,5 +1,10 @@
 package club.licho.base.algorithm;
 
+import java.util.Arrays;
+import java.util.Optional;
+
+
+
 /**
  * ClassName:MainApplication
  *
@@ -8,6 +13,7 @@ package club.licho.base.algorithm;
  */
 public class MainApplication {
     public static void main(String[] args) {
-        System.out.printf("Hello world");
+        Integer[] randomArray = ArraysGenerator.getRandomArray(Integer.class, 10, 10000);
+        System.out.println(Arrays.toString(randomArray));
     }
 }
