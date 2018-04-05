@@ -189,6 +189,13 @@
 
     <build>
         <plugins>
+            <!--跳过测试-->
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
             <!-- compiler插件参数设置，指定编码 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
