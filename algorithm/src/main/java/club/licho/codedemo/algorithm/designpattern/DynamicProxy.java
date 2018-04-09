@@ -1,6 +1,5 @@
-package club.licho.base.designpattern;
+package club.licho.codedemo.algorithm.designpattern;
 
-import com.ingcore.common.utils.DateUtils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

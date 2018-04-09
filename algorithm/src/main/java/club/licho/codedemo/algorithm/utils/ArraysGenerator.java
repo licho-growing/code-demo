@@ -1,4 +1,4 @@
-package club.licho.base.algorithm;
+package club.licho.codedemo.algorithm.utils;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.jdom.output.DOMOutputter;

@@ -1,4 +1,4 @@
-package club.licho.base.sort;
+package club.licho.codedemo.algorithm.sort;
 
 import java.util.Comparator;
 

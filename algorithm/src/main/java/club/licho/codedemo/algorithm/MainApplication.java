@@ -1,8 +1,8 @@
-package club.licho.base.algorithm;
+package club.licho.codedemo.algorithm;
 
 import java.util.Arrays;
-import java.util.Optional;
 
+import club.licho.codedemo.algorithm.utils.ArraysGenerator;
 
 
 /**

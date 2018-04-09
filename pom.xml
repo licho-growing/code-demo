@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>ingcore_common</module>
         <module>algorithm</module>
+        <module>code_demo_common</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

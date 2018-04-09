@@ -1,4 +1,4 @@
-package club.licho.base.sort;
+package club.licho.codedemo.algorithm.sort;
 
 import java.util.Comparator;
 
@@ -19,7 +19,7 @@ public interface IArraySort {
      * @param pos2
      * @param <T>
      */
-    default <T> void swap( T[] arrays, int pos1, int pos2){
+    default <T> void swap(T[] arrays, int pos1, int pos2){
       if(arrays==null || arrays.length<=0 || pos1<0||pos2<0)
           throw new RuntimeException("参数异常!");
       if(pos1>arrays.length-1||pos2>arrays.length-1)
