@@ -25,6 +25,7 @@ hs_err_pid*
 ingcore_common
 ingcore_common/**
 doc/**
+target
 target/**
 # IDE files
 *.iml
