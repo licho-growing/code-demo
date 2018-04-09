@@ -23,3 +23,7 @@ hs_err_pid*
 
 # ignore private files
 ingcore_common/**
+doc/**
+target/**
+# IDE files
+*.iml
