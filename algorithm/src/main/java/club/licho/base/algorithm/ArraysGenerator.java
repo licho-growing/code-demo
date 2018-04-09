@@ -30,11 +30,11 @@ public class ArraysGenerator {
     public static <T extends Number> T[] getRandomArray(Class<T> clazz, int size, int maxNums){
         if(size<=0)
             throw new RuntimeException("随机生成的数组大小不能为0");
+        if(!validType.contains(clazz))
+            throw new RuntimeException("不支持的随机生成类型");
         ArrayList<T> list=new ArrayList<>();
         Random random = new Random(new Date().getTime());
         for(int i=0;i<size;i++){
-            if(!validType.contains(clazz))
-                throw new RuntimeException("不支持的随机生成类型");
             if(clazz.equals(Long.class)){
                 long l = random.nextLong();
                 list.add((T)Long.valueOf(l));
