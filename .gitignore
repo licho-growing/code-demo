@@ -27,5 +27,7 @@ ingcore_common/**
 doc/**
 target
 target/**
-# IDE files
+# IDE filesgit
 *.iml
+.idea
+.idea/
