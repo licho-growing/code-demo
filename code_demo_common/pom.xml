@@ -37,6 +37,8 @@
         <commons-fileupload.version>1.2.2</commons-fileupload.version>
         <commons-codec.version>1.8</commons-codec.version>
         <commons-configuration.version>1.10</commons-configuration.version>
+
+        <netty.version>4.1.23.Final</netty.version>
     </properties>
     <dependencies>
 
@@ -188,6 +190,20 @@
             <groupId>cn.jpush.api</groupId>
             <artifactId>jpush-client</artifactId>
             <version>3.2.18</version>
+        </dependency>
+
+        <!--Apache RocketMQ 4.2-->
+        <!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-client -->
+        <dependency>
+            <groupId>org.apache.rocketmq</groupId>
+            <artifactId>rocketmq-client</artifactId>
+            <version>4.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId> <!-- Use 'netty-all' for 4.0 or above -->
+            <version>${netty.version}</version>
         </dependency>
     </dependencies>
 
