@@ -19,7 +19,7 @@ public class DefaultObserverImpl implements Observer {
 
         //1.1通过pull的方式获取主题状态。
         if(subject instanceof DefaultSubjectImpl) {
-            DefaultObserverImpl cast = DefaultObserverImpl.class.cast(subject);
+            DefaultSubjectImpl cast = DefaultSubjectImpl.class.cast(subject);
             //1.2通过cast去获取具体的数据。cast.getter()
         }
         //2.1通过pull的方式来获取

@@ -1,4 +1,4 @@
-package club.licho.codedemo.common.net;
+package club.licho.codedemo.common.nio;
 
 
 import org.slf4j.Logger;
@@ -13,8 +13,6 @@ import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
-
-import javax.swing.plaf.synth.SynthTextAreaUI;
 
 import club.licho.codedemo.common.util.GeneratorRandomName;
 
@@ -160,7 +158,6 @@ public class MessageClient implements Runnable {
                     //字节数为0
                     ;
                 }
-
             } catch (IOException e) {
                 e.printStackTrace();
             }

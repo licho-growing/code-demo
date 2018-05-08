@@ -11,6 +11,7 @@
     <modules>
         <module>algorithm</module>
         <module>code_demo_common</module>
+        <module>springdemo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -21,6 +22,7 @@
         <!--设置字符编码及java版本-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <fastjson.version>1.2.38</fastjson.version>
     </properties>
     <dependencies>
         <!--spring-boot 核心包-->
@@ -76,7 +78,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.38</version>
+            <version>${fastjson.version}</version>
         </dependency>
         <!--apache commons-->
         <dependency>
