@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd" >
+        <bean id="commonDataSourceConfig" abstract="true" class="com.alibaba.druid.pool.DruidDataSource">
+                <!-- Connection Pooling Info -->
+                <property name="initialSize" value="${jdbc.initialSize}" />			<!-- 初始化连接数量 -->
+                <property name="maxActive" value="${jdbc.maxActive}" />				<!-- 最大并发连接数 -->
+                <property name="minIdle" value="${jdbc.minIdle}" />					<!-- 最小空闲连接数 -->
+                <property name="maxWait" value="${jdbc.maxWait}" />					<!-- 配置获取连接等待超时的时间 -->
+                <property name="removeAbandoned" value="${jdbc.removeAbandoned}" />	<!-- 超过时间限制是否回收 -->
+                <property name="removeAbandonedTimeout" value="${jdbc.removeAbandonedTimeout}" />	<!-- 超过时间限制多长 -->
+                <property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" /><!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+                <property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />	 <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+                <property name="validationQuery" value="${jdbc.validationQuery}" />			<!-- 用来检测连接是否有效的sql，要求是一个查询语句-->
+                <property name="testWhileIdle" value="${jdbc.testWhileIdle}" />				<!-- 申请连接的时候检测 -->
+                <property name="testOnBorrow" value="${jdbc.testOnBorrow}" />					<!-- 申请连接时执行validationQuery检测连接是否有效，配置为true会降低性能 -->
+                <property name="testOnReturn" value="${jdbc.testOnReturn}" />					<!-- 归还连接时执行validationQuery检测连接是否有效，配置为true会降低性能  -->
+                <property name="poolPreparedStatements" value="${jdbc.poolPreparedStatements}" />	<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+                <property name="maxPoolPreparedStatementPerConnectionSize" value="${jdbc.maxPoolPreparedStatementPerConnectionSize}" />
+                <property name="logAbandoned" value="true" />
+                <property name="defaultReadOnly" value="false" />
+                <property name="defaultAutoCommit" value="false" />
+        </bean>
+        <!--*.properties当前目录下所有，*/*.properteis一级目录下的所有，**/*.properties,所有的properties参数,classpath*:jar包中的参数文件也会被读取-->
+        <!--配置Spring master数据源-->
+        <bean id="masterDataSource" parent="commonDataSourceConfig" >
+                <!-- Connection Info -->
+                <property name="driverClassName" value="${spring.datasource.master.driverClassName}" />
+                <property name="url" value="${spring.datasource.master.url}" />
+                <property name="username" value="${spring.datasource.master.username}" />
+                <property name="password" value="${spring.datasource.master.password}" />
+        </bean>
+
+        <bean id="slaveDataSource" parent="commonDataSourceConfig">
+                <!-- Connection Info -->
+                <property name="driverClassName" value="${spring.datasource.slave.driverClassName}" />
+                <property name="url" value="${spring.datasource.slave.url}" />
+                <property name="username" value="${spring.datasource.slave.username}" />
+                <property name="password" value="${spring.datasource.slave.password}" />
+        </bean>
+        <bean id="dataSource" class="club.licho.springdemo.bean.config.DynamicDataSource">
+                <property name="targetDataSources">
+                        <map >
+                                <entry key="slave1" value-ref="slaveDataSource"></entry>
+                                <entry key="master" value-ref="masterDataSource"></entry>
+                        </map>
+                </property>
+                <!--这里要使用ref.使用value默认是不做造型的。会通过jndi来查找到所需数据源-->
+                <property name="defaultTargetDataSource" ref="masterDataSource"/>
+        </bean>
+        <aop:aspectj-autoproxy/>
+        <!--配置好切面类-->
+        <bean class="club.licho.springdemo.bean.aop.DataSourceAutoChanged"/>
+</beans>
