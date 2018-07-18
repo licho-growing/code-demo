@@ -7,7 +7,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 
 /**
- * RocketMQ的producer
+ * RocketMQ的同步消息发送。
  * ClassName:SyncProducer
  *
  * @author licho
@@ -17,8 +17,8 @@ public class SyncProducer {
     public static void main(String[] args) throws Exception {
         //Instantiate with a producer group name.
         DefaultMQProducer producer = new
-                DefaultMQProducer("base");
-        producer.setNamesrvAddr("192.168.1.108:9876");
+                DefaultMQProducer("DefaultProducer");
+        producer.setNamesrvAddr("192.168.138.128:9876");
         //Launch the instance.
         try {
             producer.start();
@@ -29,7 +29,7 @@ public class SyncProducer {
         }
         for (int i = 0; i < 100; i++) {
             //Create a message instance, specifying topic, tag and message body.
-            Message msg = new Message("TopicTest" /* Topic */,
+            Message msg = new Message("DefaultTopic" /* Topic */,
                     "TagA" /* Tag */,
                     ("Hello RocketMQ " +
                             i).getBytes(RemotingHelper.DEFAULT_CHARSET) /* Message body */

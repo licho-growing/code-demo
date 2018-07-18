@@ -12,6 +12,10 @@
         <module>algorithm</module>
         <module>code_demo_common</module>
         <module>springdemo</module>
+        <module>springclouddemo</module>
+        <module>springcloudEueka</module>
+        <module>current_thread_demo</module>
+        <module>hibernatedemo</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -20,20 +24,53 @@
     </parent>
     <properties>
         <!--设置字符编码及java版本-->
+        <springboot.version>1.5.8.RELEASE</springboot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <fastjson.version>1.2.38</fastjson.version>
+        <dozer.version>5.5.1</dozer.version>
+        <org.json.version>20140107</org.json.version>
+        <com.fasterxml.jackson.version>2.6.3</com.fasterxml.jackson.version>
+        <org.codehaus.jackson.version>1.9.13</org.codehaus.jackson.version>
+        <com.fasterxml.jackson.version>2.6.3</com.fasterxml.jackson.version>
+        <guava.version>18.0</guava.version>
+        <org.httpcomponents-version>4.3.6</org.httpcomponents-version>
+        <javax.mail.version>1.4.4</javax.mail.version>
+        <commons-collections.version>3.2.1</commons-collections.version>
+        <commons-lang3.version>3.1</commons-lang3.version>
+        <commons-lang.version>2.6</commons-lang.version>
+        <commons.io.version>2.4</commons.io.version>
+        <commons-fileupload.version>1.2.2</commons-fileupload.version>
+        <commons-codec.version>1.8</commons-codec.version>
+        <commons-configuration.version>1.10</commons-configuration.version>
+        <springboot.redis.version>1.4.7.RELEASE</springboot.redis.version>
+        <netty.version>4.1.23.Final</netty.version>
+        <shiro.version>1.2.2</shiro.version>
     </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-redis</artifactId>
+                <version>${springboot.redis.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <!--spring-boot 核心包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-freemarker</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -68,12 +105,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!--mybatis依赖-->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>1.1.1</version>
-        </dependency>
+        <!--&lt;!&ndash;mybatis依赖&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.mybatis.spring.boot</groupId>-->
+            <!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
+            <!--<version>1.1.1</version>-->
+        <!--</dependency>-->
         <!--json-->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -126,6 +163,19 @@
         <!-- 配置java版本 不配置的话默认父类配置的是1.6-->
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>clean-all</id>
+                            <!--在构建生命周期中的的validate阶段执行clean:-->
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>clean</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>

@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 import club.licho.codedemo.common.netty.handler.TimeServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.EventLoopGroup;
@@ -66,7 +67,8 @@ public class DiscardServer {
         protected void initChannel(SocketChannel socketChannel) throws Exception {
             socketChannel.pipeline().addLast(new LineBasedFrameDecoder(1024*1024))
                     .addLast(new StringDecoder(Charset.forName("UTF-8")))
-                    .addLast(new TimeServerHandler());
+                    .addLast(new DiscardServerHandler());
         }
+
     }
 }

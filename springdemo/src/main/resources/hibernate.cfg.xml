@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    
+    <session-factory>
+        <!--<property name="driverClassName">com.mysql.jdbc.Driver</property>-->
+        <!--<property name="url">jdbc:mysql://101.200.48.114:3306/guest</property>-->
+        <!--<property name="username">guest</property>-->
+        <!--<property name="password">7F0vAGa8vd5XLW0PTUUIXOL3uuFXlXkzFXtxoC4SPuOQVynhtUv9y0X6dFpes3Yu</property>-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://101.200.48.114:3306/guest</property>
+        <property name="hibernate.connection.username">guest</property>
+        <property name="hibernate.connection.password">7F0vAGa8vd5XLW0PTUUIXOL3uuFXlXkzFXtxoC4SPuOQVynhtUv9y0X6dFpes3Yu</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+        <!--使用durid数据源-->
+        <!--<property name="hibernate.connection.provider_class">com.alibaba.druid.support.hibernate.DruidConnectionProvider</property>-->
+        <property name="format_sql">true</property>
+        <property name="hibernate.show_sql">true</property>
+        <!--<mapping resource="hibernate/User.hbm.xml"/>-->
+    </session-factory>
+</hibernate-configuration>
