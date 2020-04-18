@@ -35,6 +35,7 @@ public class MainApplication {
             writer.write(temp);
         }
 
+        
         log.info(writer.toString());
     }
 }
